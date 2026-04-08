@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uhhh, HI</title>
     <style>
+        /* Reset margins and set the background to black */
         body, html {
             margin: 0;
             padding: 0;
@@ -14,6 +15,26 @@
             overflow: hidden;
             font-family: 'Courier New', Courier, monospace;
         }
+
+        /* Container for the YouTube iframe */
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none; /* Prevents clicking on YouTube UI */
+        }
+
+        /* The start screen overlay */
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -26,6 +47,7 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
+            cursor: pointer;
             transition: opacity 0.5s ease;
         }
 
@@ -35,11 +57,22 @@
             margin-bottom: 10px;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
+
+        .overlay p {
+            font-size: 1.5rem;
+            animation: blink 1.5s infinite;
+        }
+
+        /* Blinking effect for the subtext */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="overlay" id="start-screen">
+    <div class="overlay" id="start-screen" onclick="startBadApple()">
         <h1>What you doin here?</h1>
     </div>
 </body>
